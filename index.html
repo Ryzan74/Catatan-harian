@@ -1,16 +1,89 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catatan Harian</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator UMKM</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Catatan Harian</h1>
-  <input id="input" type="text" placeholder="Tulis catatan..." />
-  <button onclick="tambahCatatan()">Tambah</button>
-  <ul id="daftar"></ul>
-  <script src="script.js"></script>
+    <div class="container">
+        <h1>Invoice Generator</h1>
+
+        <div class="invoice-form">
+            <h2>Data Invoice</h2>
+            <div class="form-group">
+                <label for="invoiceNumber">Nomor Invoice:</label>
+                <input type="text" id="invoiceNumber" value="INV-202407001">
+            </div>
+            <div class="form-group">
+                <label for="invoiceDate">Tanggal Invoice:</label>
+                <input type="date" id="invoiceDate" value="2024-07-01">
+            </div>
+            <div class="form-group">
+                <label for="dueDate">Jatuh Tempo:</label>
+                <input type="date" id="dueDate" value="2024-07-15">
+            </div>
+
+            <h2>Informasi Penjual</h2>
+            <div class="form-group">
+                <label for="sellerName">Nama Bisnis Anda:</label>
+                <input type="text" id="sellerName" value="Nama Usaha Anda">
+            </div>
+            <div class="form-group">
+                <label for="sellerAddress">Alamat Penjual:</label>
+                <textarea id="sellerAddress">Jl. Contoh No. 123, Bojongsoang, Bandung</textarea>
+            </div>
+            <div class="form-group">
+                <label for="sellerPhone">Telepon Penjual:</label>
+                <input type="text" id="sellerPhone" value="0812-3456-7890">
+            </div>
+            <div class="form-group">
+                <label for="sellerEmail">Email Penjual:</label>
+                <input type="email" id="sellerEmail" value="info@usahaanda.com">
+            </div>
+
+            <h2>Informasi Pembeli</h2>
+            <div class="form-group">
+                <label for="buyerName">Nama Pelanggan:</label>
+                <input type="text" id="buyerName" value="Nama Pelanggan Anda">
+            </div>
+            <div class="form-group">
+                <label for="buyerAddress">Alamat Pembeli:</label>
+                <textarea id="buyerAddress">Jl. Pelanggan No. 45, Jakarta</textarea>
+            </div>
+
+            <h2>Rincian Barang/Jasa</h2>
+            <div id="itemsContainer">
+                <div class="item-row">
+                    <input type="text" class="item-description" placeholder="Deskripsi Barang/Jasa" value="Jasa Desain Website">
+                    <input type="number" class="item-quantity" placeholder="Qty" value="1" min="1">
+                    <input type="number" class="item-price" placeholder="Harga Satuan" value="2500000" min="0">
+                    <button class="remove-item-btn">X</button>
+                </div>
+            </div>
+            <button id="addItemBtn">Tambah Item</button>
+
+            <div class="form-group">
+                <label for="discount">Diskon (Rp):</label>
+                <input type="number" id="discount" value="0" min="0">
+            </div>
+            <div class="form-group">
+                <label for="taxRate">Pajak (%):</label>
+                <input type="number" id="taxRate" value="0" min="0" max="100">
+            </div>
+
+            <button id="generateInvoiceBtn">Buat Invoice</button>
+        </div>
+
+        <div class="invoice-preview" id="invoicePreview">
+            <h2>Pratinjau Invoice</h2>
+            <div id="invoiceContent">
+                </div>
+            <button id="printInvoiceBtn">Cetak Invoice</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
